@@ -35,7 +35,7 @@ if (typeof FEATURE_SOUND)
 
 if (typeof PLUGIN_FBINSTANT)
 {
-    var FacebookInstantGamesPlugin = require('../../plugins/fbinstant/src/FacebookInstantGamesPlugin');
+    // var FacebookInstantGamesPlugin = require('../../plugins/fbinstant/src/FacebookInstantGamesPlugin');  //z00222898
 }
 
 /**
@@ -294,7 +294,7 @@ var Game = new Class({
              * @type {Phaser.FacebookInstantGamesPlugin}
              * @since 3.13.0
              */
-            this.facebook = new FacebookInstantGamesPlugin(this);
+            // this.facebook = new FacebookInstantGamesPlugin(this);
         }
 
         /**

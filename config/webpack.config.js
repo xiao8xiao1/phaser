@@ -9,7 +9,8 @@ module.exports = {
     context: `${__dirname}/../src/`,
 
     entry: {
-        phaser: './phaser.js'
+        // phaser: './phaser.js'
+        phaser: './phaser-custom.js'
     },
 
     output: {
@@ -27,9 +28,9 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            "typeof CANVAS_RENDERER": JSON.stringify(true),
+            "typeof CANVAS_RENDERER": JSON.stringify(false),
             "typeof WEBGL_RENDERER": JSON.stringify(true),
-            "typeof EXPERIMENTAL": JSON.stringify(true),
+            "typeof EXPERIMENTAL": JSON.stringify(false),
             "typeof PLUGIN_CAMERA3D": JSON.stringify(false),
             "typeof PLUGIN_FBINSTANT": JSON.stringify(false),
             "typeof FEATURE_SOUND": JSON.stringify(true)

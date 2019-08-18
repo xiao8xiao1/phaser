@@ -21,6 +21,11 @@ var MergeXHRSettings = require('./MergeXHRSettings');
  */
 var XHRLoader = function (file, globalXHRSettings)
 {
+    if (typeof wx !== "undefined") {
+        file.onLoad.call(file, {readyState:4, status:200}, {});
+        return;
+    }
+
     var config = MergeXHRSettings(globalXHRSettings, file.xhrSettings);
 
     var xhr = new XMLHttpRequest();

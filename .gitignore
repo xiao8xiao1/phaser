@@ -16,3 +16,4 @@ build/
 out/
 scripts/tsgen/test/bin/
 scripts/tsgen/test/output.txt
+/images

@@ -41,6 +41,7 @@ var ImageFile = new Class({
     {
         var extension = 'png';
         var normalMapURL;
+        this.isWX = typeof wx !== "undefined";
 
         if (IsPlainObject(key))
         {
@@ -105,19 +106,29 @@ var ImageFile = new Class({
 
         this.data.onload = function ()
         {
-            File.revokeObjectURL(_this.data);
-
-            _this.onProcessComplete();
+            if (!this.isWX) {
+                File.revokeObjectURL(_this.data);
+                _this.onProcessComplete();
+            } else {
+                this.addToCache();
+            }
         };
 
         this.data.onerror = function ()
         {
-            File.revokeObjectURL(_this.data);
+            if (!this.isWX) {
+                File.revokeObjectURL(_this.data);
+                _this.onProcessError();
+            } else {
 
-            _this.onProcessError();
+            }
         };
 
-        File.createObjectURL(this.data, this.xhrLoader.response, 'image/png');
+        if (this.isWX) {
+            this.data.src = this.url;
+        } else {
+            File.createObjectURL(this.data, this.xhrLoader.response, 'image/png');
+        }
     },
 
     /**

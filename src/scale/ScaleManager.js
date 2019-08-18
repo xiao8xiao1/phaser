@@ -653,7 +653,7 @@ var ScaleManager = new Class({
 
         if (this.parentIsWindow && this.game.device.os.iOS)
         {
-            DOMRect.height = GetInnerHeight(true);
+            // DOMRect.height = GetInnerHeight(true); //z00222898
         }
 
         var resolution = this.resolution;

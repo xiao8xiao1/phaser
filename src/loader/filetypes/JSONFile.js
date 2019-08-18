@@ -97,8 +97,14 @@ var JSONFile = new Class({
         if (this.state !== CONST.FILE_POPULATED)
         {
             this.state = CONST.FILE_PROCESSING;
-
-            var json = JSON.parse(this.xhrLoader.responseText);
+            if (typeof wx === "undefined")
+            {
+                var json = JSON.parse(this.xhrLoader.responseText);
+            }
+            else
+            {
+                var json = JSON.parse(wx.getFileSystemManager().readFileSync(this.src, "ascii"));
+            }
 
             var key = this.config;
 
